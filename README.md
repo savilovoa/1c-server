@@ -5,8 +5,9 @@
 1c-server -- это сервер 1С:Предприятия в контейнере Docker.
 MAIN Ubunta:xenial
 
-Сделан на основе a4neg/1c-server 
-Убраны шрифты, добавлена инсталляция вес-сервиса и права на папку
+Сделан на основе a4neg/1c-server.
+
+Убраны шрифты, добавлена инсталляция веб-сервиса 1С и права на папки
 
 ## Как это установить?
 
@@ -16,7 +17,7 @@ MAIN Ubunta:xenial
 
     git clone https://github.com/savilovoa/1c-server.git
 
-Скопируйте deb-файлы дистрибутива сервера 1С:Предприятия в каталог `/deb`, в файлу Dockerfile отредактируйте номер версии  и затем выполните команды:
+Скопируйте deb-файлы дистрибутива сервера 1С:Предприятия в каталог `/deb`, в файле Dockerfile отредактируйте номер версии и затем выполните команды:
 
     cd 1c-server
     ./build.sh
@@ -24,13 +25,9 @@ MAIN Ubunta:xenial
 
 ## Использование
 Предпологается использование совместно в Prostgresql в Docker-контейнере. К примеру https://github.com/rsyuzyov/docker-postgresql-pro-1c
+
 У меня не подключалось Администрирование серверов без указания --link=postgresql:db. Сервер базы данных в таком случае указывать db
 
-
-## Где мои данные?
-
-Данные сервера 1С:Предприятия вы можете найти в каталогах `/var/lib/docker/volumes/1c-server-home/_data` (домашний каталог пользователя `usr1cv8`) и `/var/lib/docker/volumes/1c-server-logs/_data` (технологические журналы).
-По умлочанию монтируется в /mnt/1c_data
 
 ## Как это удалить?
 
@@ -42,7 +39,3 @@ MAIN Ubunta:xenial
 
     docker rm savilovoa/1c-server
 
-:fire: Удалите данные:
-
-    docker volume rm 1c-server-home
-    docker volume rm 1c-server-logs
